@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="background-color:rgba(94, 103, 153, 0.575)">
+    <style>
+        .prof-box1 {
+            width:750px;
+            height:510px;
+            background-color: rgba(255, 255, 255, 0.575);
+            padding: 20px;
+            color:white;
+            margin:0 auto;
+            margin-top: 190px;
+            text-align: left;
+            
+        }
+        
+        .topnav {
+            overflow: hidden;
+            position:absolute;
+            
+              top:0px;
+              left:0px;
+              width:100%;
+            background-color: rgb(34, 10, 99);
+          }
+        
+          li {
+            margin-left: 2em;
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color:rgb(34, 10, 99);
+        }
+        
+        
+        </style>
+<head>
+    <script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous">
+	  	
+	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Favourite books</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <div class="topnav">
+        <h1 style="color: white;margin-left:40px;">Online Book Store</h1>
+        <li><a href="{% url 'frontpage' %}">Home</a></li>
+        <li><a href="{% url 'book_list' %}">All Books</a></li>
+        <li><a href="{% url 'viewfav' %}">Favourite Books</a></li>
+        <li><a href="{% url 'upload_book' %}">Upload Book</a></li>
+        <li><a href="{% url 'logoutpage' %}">Logout  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        
+
+        <form method="GET" action="/search" style="margin-top: 35px;">
+          
+            <input type="search"  placeholder="Search Books" name="query" id="query" aria-label="Search">
+            <button type="submit">Search</button>
+          </form>
+    </div>
+    <div class="prof-box1">
+        <h1 style="font-size: 2.1rem;color:black;text-align:center;">Favourite Books</h1>
+        <table class="table">
+            <thead>
+                <tr style="color:rgb(34, 10, 99); font-size:1.7em;">
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th>Download</th>
+                    <br>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %} 
+                <tr style="color: black;">
+                    <td>&nbsp;&nbsp;&nbsp;{{ book.title }}</td>
+                    
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ book.author }}</td>
+                    <td style="padding-right: 32px;">
+                        <button>
+                        <a href="{{ book.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+                            Download PDF  
+                        </a>
+                        </button></td>
+                        <td><input style="padding: 3px;"type="button" id="{{ book.title }}" name="{{ book.title }}" value="Remove from Favorites" class="diya"></td>
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+           
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+            $('.diya').click(function(e){
+            e.preventDefault();
+            var idstr=this.id.toString();
+            console.log(idstr);
+            $.ajax({
+                type:"POST",
+                url:"/deletefav/",
+                data:{
+                    'book_title':idstr,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                success: function(html){
+                    swal("Book removed from  Favourite. Reload to View Changes.", {
+                    icon: "success",
+                    });
+                    $("button.swal-button--confirm").click(function(event){
+                        event.preventDefault();
+                    });
+                },
+                error: function () {
+
+                alert('Error Removing From Favourite');
+
+                    }
+                        
+                });
+            });
+    </script>
+</head>
+<body>    
+</body>
+</html>

@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="background-color:rgba(94, 103, 153, 0.575);" >
+    <style>
+
+        .prof-box1 {
+            width:750px;
+            height:510px;
+            background-color: rgba(255, 255, 255, 0.575);
+            padding: 20px;
+            color:white;
+            margin:0 auto;
+            margin-top: 190px;
+            text-align: left;
+            
+        }
+        
+        .topnav {
+          overflow: hidden;
+          position:absolute;
+          
+            top:0px;
+            left:0px;
+            width:100%;
+          background-color: rgb(34, 10, 99);
+        }
+        
+        li {
+            margin-left: 2em;
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color:rgb(34, 10, 99);
+        }
+     
+        </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <div class="topnav">
+        <h1 style="color: white; margin-left:40px;">Online Book Store</h1>
+        
+        <li><a href="{% url 'frontpage' %}">Home</a></li>
+        <li><a href="{% url 'book_list' %}">All Books</a></li>
+        <li><a href="{% url 'viewfav' %}">Favourite Books</a></li>
+        <li><a href="{% url 'upload_book' %}">Upload Book</a></li>
+        <li><a href="{% url 'logoutpage' %}">Logout &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        
+        <form method="GET" action="/search" style="margin-top: 35px;">
+          
+          <input type="search"  placeholder="Search Books" name="query" id="query" aria-label="Search">
+          <button type="submit">Search</button>
+        </form>
+    </div>
+        
+    <div class="prof-box1" style="color: black;">
+      
+
+
+        <h1 style="font-size: 2rem;color:black">Welcome {{ request.user }}! &#128515</h1>
+        <h1 style="font-size:1.2rem;color:rgba(2, 0, 5, 0.877)">Online Book Store is an online platform for free e-books on Data Structure and Algorithms, Programming Languages and Web Development.</h1>
+        <br>
+        <h1 style="font-size: 1.7rem;color:black"><b>Click here to view books by category:</b></h1>
+        <h1 style="font-size: 1.2rem;color:black;display: inline-block">&#9679 Data Structure and Algorithms : </h1>
+        <button>
+          <a href="{% url 'dsabooks' %}" class="btn btn-primary btn-sm">
+              Open
+          </a>
+          </button>
+          <br>
+          <h1 style="font-size: 1.2rem;color:black;display: inline-block">&#9679 Programming Languages : </h1>
+        
+        <button>
+          <a href="{% url 'cpbooks' %}" class="btn btn-primary btn-sm">
+              Open
+          </a>
+          </button>
+          <br>
+          <h1 style="font-size: 1.2rem;color:black;display: inline-block">&#9679 Web Development : </h1>
+        <button>
+          <a href="{% url 'webbooks' %}" class="btn btn-primary btn-sm">
+              Open
+          </a>
+          </button>
+        
+    </div>
+        
+    </div>
+</head>
+<body>
+    
+      
+</body>
+</html>
+
+
+
+
+
+

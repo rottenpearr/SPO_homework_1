@@ -1,0 +1,6 @@
+bookenv/
+__pycache__/
+*.sqlite
+
+.venv
+.idea
