@@ -59,18 +59,25 @@ docker run -d -p 8080:8080 books_webserver
 ### После запуска можно перейти по ссылке `http://localhost:8080` и проверить работоспособность проекта
 
 Для входа нужно зарегистрироваться или авторизоваться
+
 ![Регистрация](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/1.png)
+
 ![Авторизация](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/2.png)
 
-На сайте можно искать и скачивать книги
+### На сайте можно искать и скачивать книги
+
 ![Главная](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/3.png)
+
 ![Раздел "Все книги"](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/4.png)
 
-Также книги можно добавлять в понравившиеся
+### Также книги можно добавлять в понравившиеся
+
 ![Добавление в понравившиеся](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/5.png)
+
 ![Раздел понравившихся](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/6.png)
 
-На сайте имеется функция добавления своих электронных книг
+### На сайте имеется функция добавления своих электронных книг
+
 ![Добавление своей книги](https://github.com/rottenpearr/SPO_homework_1/blob/master/example/7.png)
 
 ## Автор
