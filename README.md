@@ -19,7 +19,7 @@ git clone https://github.com/diyajaiswal11/BookStore
 
 ### В файле bookstore/settings.py в строке 28 делаем ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost", "*"]
 
-### 5. В корне проекта создаем файл Dockerfile с данным содержимым
+### В корне проекта создаем файл Dockerfile с данным содержимым
 ```
 # Используем базовый образ Python
 FROM python:3.7.4-slim
