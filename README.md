@@ -12,7 +12,9 @@
 
 ### 2. Клонирование проекта
 Сначала был склонирован выбранный проект
-```git clone https://github.com/diyajaiswal11/BookStore```
+```
+git clone https://github.com/diyajaiswal11/BookStore
+```
 Файлы склонированного проекта переместила в отдельный новый проект
 
 ### 3. Изменение версии psycopg2 в файле requirements.txt
@@ -52,7 +54,11 @@ EXPOSE 8080
 ### 6. Создание и запуск контейнера
 
 Сначала соберем проект с помощью команды
-```docker build -t books_webserver .```
+```
+docker build -t books_webserver .
+```
 
 Запустим контейнер с помощью команды
-```docker run -d -p 8080:8080 books_webserver```
+```
+docker run -d -p 8080:8080 books_webserver
+```
